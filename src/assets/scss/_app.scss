@@ -1,0 +1,15 @@
+@import "./variables";
+
+// components
+@import "./components/posts";
+@import "./components/sidebar";
+@import "./components/main";
+@import "./components/header";
+@import "./components/transactions";
+@import "./components/sideModal";
+
+// pages
+@import "./pages/dashboard";
+// 3rd party
+@import 'bootstrap/scss/bootstrap';
+@import 'react-toastify/dist/ReactToastify.min.css';

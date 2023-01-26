@@ -1,0 +1,117 @@
+#sidebar {
+  position: absolute;
+  width: $sidebar-width;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  bottom: 0;
+  z-index: 10;
+  overflow-y: scroll;
+  background: $white;
+  transition: $all-transition;
+
+  .sidebar-header {
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2em;
+    color: #939BA9;
+    text-transform: uppercase;
+
+  }
+
+  .logo {
+    padding-inline-start: 40px !important;
+  }
+
+  .user-panel {
+    background: #FAFAFB;
+    border: 1px solid #E2E2EA;
+    border-radius: 15px;
+
+    .user-avatar {
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  .sidebar-nav {
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  .sidebar-top-divider {
+    margin-top: 80px !important;
+  }
+
+  .sidebar-item {
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 85%;
+    font-size: 16px;
+    // font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 450;
+    border-radius: 10px;
+
+    .icon-bg{
+      width: 30px;
+      height: 30px;
+      background-color: #F2F2F2;
+      border-radius: 10px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sidebar-link {
+      color: #343C49;
+      padding-left: 7px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &.active,
+    &:hover {
+      background-color: $lightOrange;
+      .icon-bg{
+        background-color: $amber;
+      }
+      .sidebar-link {
+        color: $textBlack;
+
+        svg {
+          path {
+            fill: $textBlack;
+          }
+        }
+      }
+    }
+  }
+
+  &.toggled {
+    margin-left: -$sidebar-width;
+  }
+
+  @media (min-width: 1px) and (max-width: #{map-get($grid-breakpoints, 'lg') - .02px}) {
+    // Sidebar default state (on mobile)
+    margin-left: -$sidebar-width;
+
+    // Sidebar toggled state (on mobile)
+    &.toggled {
+      margin-left: 0;
+    }
+  }
+}

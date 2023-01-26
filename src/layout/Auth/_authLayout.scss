@@ -1,0 +1,38 @@
+#auth {
+    background: #ffffff;
+
+    .container {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .card {
+        background: #FFFFFF;
+        box-shadow: 0px 10px 15px rgba(166, 164, 164, 0.05);
+        border-radius: 10px;
+
+        border: 1px solid #EBF0FF !important;
+    }
+
+    .form-control {
+        padding: 13.5px 12px 13.5px 16px;
+        gap: 10px;
+
+        height: 48px;
+
+        /* Placeholder/Placeholder BG */
+
+        background: #FAFCFE;
+        /* Lines/Lines Light */
+
+        border: 1px solid #EBF0FF;
+        border-radius: 5px;
+        background-color: #FAFCFE;
+    }
+    h4{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 40px;
+    }
+}
