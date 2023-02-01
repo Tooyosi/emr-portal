@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { Button, Card, CardBody, Col, Container, Row } from 'reactstrap'
 import Search from './Search'
 import SideComponent from './SideComponent'
+import SearchFrequentlyUsed from './SearchFrequentlyUsed'
 
 const SearchInput: React.FC<any> = (props) => {
 
@@ -85,7 +86,8 @@ const Doctor = () => {
                 <Col sm="12">
                     <Card className='mt-4'>
                         <CardBody>
-                            <h4 className='mb-3'>Search By Location</h4>
+                            {/* <h4 className='mb-3'>Search By Location</h4> */}
+                            <SearchFrequentlyUsed />
                             <form onSubmit={doSearch}>
                                 <Row>
                                     <Col md="3">

@@ -32,11 +32,11 @@ const Header = ({ ...props }: any) => {
     return (
         <Navbar id='header' color='white' expand="md" className='pt-3 px-0'>
                 <div className='mr-4'>
-                    <h4 className='font-weoght-bolder'>Welcome Back</h4>
+                    <h4 className='font-weoght-bolder'>Welcome Back, User</h4>
                 </div>
-                <div className='nav-search'>
+                {/* <div className='nav-search'>
                    <SearchIcon /> <input placeholder='Search...' type="search" name="" id="" />
-                </div>
+                </div> */}
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto mt-md-0 mt-3 align-items-center" navbar>

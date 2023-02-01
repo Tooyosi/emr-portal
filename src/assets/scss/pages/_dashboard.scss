@@ -2,11 +2,11 @@
     background-color: $lightOrange;
 }
 
-.card {
-    box-shadow: 0px 5px 20px rgba(136, 120, 94, 0.05);
-    border-radius: 10px !important;
-    border-color: transparent !important;
-}
+// .card {
+//     box-shadow: 0px 5px 20px rgba(136, 120, 94, 0.05);
+//     border-radius: 10px !important;
+//     border-color: transparent !important;
+// }
 
 table {
     thead {
@@ -53,6 +53,14 @@ input[type="checkbox"] {
     transition: all .2s ease-in-out;
     transition-delay: .3s;
 
+    .card {
+        background: #FFFFFF;
+        box-shadow: 0px 10px 15px rgba(166, 164, 164, 0.05);
+        border-radius: 10px;
+
+        border: 1px solid #EBF0FF !important;
+    }
+
 
     &.show {
         opacity: 1;
@@ -63,7 +71,7 @@ input[type="checkbox"] {
         position: relative;
         transition: all .5s ease;
         transition-delay: .3s;
-        max-width: 536px;
+        // max-width: 536px;
         height: 100vh;
         background-color: $white;
         margin-left: auto;
@@ -137,4 +145,10 @@ input[type="checkbox"] {
     margin-right: 10px;
     box-shadow: 0px 5px 20px rgba(136, 120, 94, 0.05);
     cursor: pointer;
+}
+
+.backarrow {
+    &:hover{
+        opacity: 0.5;
+    }
 }
