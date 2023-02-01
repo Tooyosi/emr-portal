@@ -74,6 +74,6 @@ const accountRoutes: routeInterface = {
 
 export const auth: Array<routeInterface> = [authRoutes];
 export const dashboard: Array<routeInterface> = [doctorRoutes, appointmentRoutes, viewAppointmentRoutes];
-const routes: Array<routeInterface> = [doctorRoutes, appointmentRoutes];
+const routes: Array<routeInterface> = [appointmentRoutes, doctorRoutes];
 
 export default routes

@@ -58,6 +58,9 @@ const Appointments = () => {
 
     return (
         <Container>
+            <Row className='book-appointment py-5 align-bottom'>
+                <Button color='amber' className='text-white ml-2'>+ New Appointment</Button>
+            </Row>
             <Row className="mt-5" >
                 <Col md="6">
                     <h4 className='mb-3'>Appointments</h4>
@@ -73,7 +76,7 @@ const Appointments = () => {
                             <Input checked={state.showOnly === "scheduled"} onClick={() => doFilter("scheduled")} type='checkbox' color='amber' />
                             <label htmlFor="">Show Only Scheduled</label>
                         </div>
-                        <Button color='amber' className='text-white'>+ New Appointment</Button>
+                        {/* <Button color='amber' className='text-white'>+ New Appointment</Button> */}
                     </div>
                 </Col>
             </Row>

@@ -63,6 +63,10 @@ const Doctor = () => {
     const [openModal, setOpenModal] = useState(false)
     const toggleModal = ()=> setOpenModal(!openModal);
 
+    const [careProvider, setCareProvider] = useState(false)
+    const toggleCareProvider = () => setCareProvider(!careProvider)
+
+
     const handleChange = (e: any) => {
         setState((prev) => ({
             ...prev,
