@@ -1,4 +1,15 @@
 .book-appointment {
     background-image: url("../../images/backgrounds/book-appointment.svg");
-    background-size: contain cover;
+    background-size: cover no-repeat;
+    border-radius: 15px;
+}
+
+.active-allOrCompleted {
+    color: $amber;
+    border-bottom: 2px solid $amber;
+}
+
+.completed {
+    opacity: 50%;
+    pointer-events: none;
 }

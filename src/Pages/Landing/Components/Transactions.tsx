@@ -35,8 +35,9 @@ const Transactions: React.FC<any> = ({ header, partialiew, data }) => {
         status: "Visited"
     }]
     return (
-        <Card>
-            <CardBody>
+        // <Card>
+        //     <CardBody>
+            <div>
                 <h6 className='mb-4'>{header}</h6>
                 <Table responsive>
                     <thead>
@@ -54,7 +55,8 @@ const Transactions: React.FC<any> = ({ header, partialiew, data }) => {
                     </thead>
                     <tbody>
                         {tableData.map((data: any, i: any) => (
-                            <tr key={i}>
+                            <tr key={i}
+                                className={`${data.completed === true ? 'completed' : ''}`}>
                                 <td>
                                     <Input type='checkbox' />
                                 </td>
@@ -78,8 +80,9 @@ const Transactions: React.FC<any> = ({ header, partialiew, data }) => {
                         ))}
                     </tbody>
                 </Table>
-            </CardBody>
-        </Card>
+            </div>
+        //     </CardBody>
+        // </Card>
     )
 }
 
