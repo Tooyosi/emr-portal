@@ -1,8 +1,11 @@
 import React from 'react'
 import { Card, CardBody, Input, Table, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import CaretIcon from '../Icons/CaretIcon'
+import Available from 'Pages/Doctor/Icons/Available'
+import DimAvailable from 'Pages/Doctor/Icons/DimAvailable'
 
-const Transactions: React.FC<any> = ({ header, partialiew, data }) => {
+const Transactions: React.FC<any> = ({ header, data }) => {
+
     const tableData = data || [{
         careProvider: "Courtney Henry",
         date: "02 Jun, 2022",
@@ -37,50 +40,54 @@ const Transactions: React.FC<any> = ({ header, partialiew, data }) => {
     return (
         // <Card>
         //     <CardBody>
-            <div>
-                <h6 className='mb-4'>{header}</h6>
-                <Table responsive>
-                    <thead>
-                        <tr className='text-uppercase'>
+        <div>
+            <h6 className='mb-4'>{header}</h6>
+            <Table responsive>
+                <thead>
+                    <tr className='text-uppercase'>
+                        <td className='zero-opacity'>
+                            <Input type='checkbox' />
+                        </td>
+                        <th>Time</th>
+                        <th>care provider</th>
+                        <th>Diagnosis</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tableData.map((data: any, i: any) => (
+                        <tr key={i}
+                            className={`${data.completed === true ? 'completed' : ''}`}>
                             <td>
                                 <Input type='checkbox' />
                             </td>
-                            {!partialiew && <th>Time</th>}
-                            <th>care provider</th>
-                            <th>Diagnosis</th>
-                            <th>Date</th>
-                            {!partialiew && <th>Status</th>}
-                            <th></th>
+                            <td>{data.time}</td>
+                            <td>{data.careProvider}</td>
+                            <td>{data.diagnosis}</td>
+                            <td>{data.date}</td>
+                            <td>
+                                {data.status === 'Scheduled' ? <Available /> : <DimAvailable />}
+                                &nbsp;
+                                {data.status}
+                            </td>
+                            <td>
+                                <UncontrolledDropdown>
+                                    <DropdownToggle color='transparent' size='md' className='caret mt-0'>
+                                        <CaretIcon />
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem>Reschedule Appointment</DropdownItem>
+                                        <DropdownItem href={`/appointment/${i}`}>View Details</DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {tableData.map((data: any, i: any) => (
-                            <tr key={i}
-                                className={`${data.completed === true ? 'completed' : ''}`}>
-                                <td>
-                                    <Input type='checkbox' />
-                                </td>
-                                {!partialiew && <td>{data.time}</td>}
-                                <td>{data.careProvider}</td>
-                                <td>{data.diagnosis}</td>
-                                <td>{data.date}</td>
-                                {!partialiew && <td>{data.status}</td>}
-                                <td>
-                                    <UncontrolledDropdown>
-                                        <DropdownToggle color='transparent' size='md' className='caret mt-0'>
-                                                <CaretIcon />
-                                        </DropdownToggle>
-                                        <DropdownMenu>
-                                            <DropdownItem>Reschedule Appointment</DropdownItem>
-                                            <DropdownItem href={`/appointment/${i}`}>View Details</DropdownItem>
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            </div>
+                    ))}
+                </tbody>
+            </Table>
+        </div>
         //     </CardBody>
         // </Card>
     )

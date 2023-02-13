@@ -9,6 +9,9 @@ $textBlack: #0F1A2A;
 $all-transition: all 0.5s ease;
 // $amber: #F8A912;
 $amber: #6666FF;
+$alertGreen: #169E00;
+$alertRed: #FF5367;
+
 
 
 // CUSTOM THEME
@@ -18,7 +21,9 @@ $theme-colors: (
   "lightBlue": $lightBlue,
   "transBlue": $transBlue,
   "lightOrange":$lightOrange,
-  "amber": $amber
+  "amber": $amber,
+  "alertGreen": $alertGreen,
+  "alertRed": $alertRed
 );
 
 

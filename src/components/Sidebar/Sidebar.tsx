@@ -4,6 +4,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Badge } from "reactstrap";
 import routes from "Routes";
+import Logout from "./icons/Logout";
 
 
 const SidebarItem: React.FC<any> = ({ name, classProp, badgeColor, badgeText, icon: Icon, to, onClick, image
@@ -42,16 +43,16 @@ const Sidebar: React.FC<any> = React.memo(({ toggled, toggleSidebar }) => {
         </div>}
       </div>
       <div className='my-3 logo'>
-       <Link to="/dashboard"> <Logo /></Link>
+        <Link to="/dashboard"> <Logo /></Link>
       </div>
       <PerfectScrollbar>
         <ul className="sidebar-nav">
-          {routes.map((category:any, index:any) => {
+          {routes.map((category: any, index: any) => {
             return (
               <React.Fragment key={index}>
-                  {category.header ? (
-                      <li className="ml-2 mb-3 sidebar-header">{category.header}</li>
-                    ) : null}
+                {category.header ? (
+                  <li className="ml-2 mb-3 sidebar-header">{category.header}</li>
+                ) : null}
                 <SidebarItem
                   name={category.name}
                   to={category.path}
@@ -66,6 +67,13 @@ const Sidebar: React.FC<any> = React.memo(({ toggled, toggleSidebar }) => {
           })}
         </ul>
       </PerfectScrollbar>
+      <div className='fixed-bottom ml-5 mb-4 d-none d-lg-block'>
+        <Link to="/dashboard">
+          <Logout />
+          &nbsp;
+          <span className="text-alertRed"> Logout </span>
+        </Link>
+      </div>
     </div>
   )
 })

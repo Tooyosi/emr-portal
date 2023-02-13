@@ -90,7 +90,7 @@ const Appointments = () => {
 
     return (
         <Container>
-            <Row className='book-appointment py-4 mx-1 align-bottom'>
+            <Row className='book-appointment py-4 mx-0 align-bottom w-100'>
                 <Col>
                     <h4 className='text-white my-0'>Book Quick Care Provider Appointments Easily</h4>
                     <p className='text-white mb-3 mt-1'>With EMR, you can book, search, reschedule appointments with care providers anytime.</p>
@@ -103,7 +103,7 @@ const Appointments = () => {
                 <MyCompAppointments allOrComplete={allOrComplete} toggleAll={toggleAll} toggleComplete={toggleComplete} />
             </Row>
             <Row>
-                <Card className='w-100'>
+                <Card className='w-100 mx-3 mt-3'>
                     <CardBody>
                         <Row className="my-2" >
                             <Col md="6">
