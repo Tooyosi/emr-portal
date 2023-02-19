@@ -111,14 +111,14 @@ const Transactions: React.FC<any> = ({ header, data }) => {
             >
                 <div className='text-center'>
                     <div>
-                        { !cancelled ? <CancelAlert /> : <CancelSuccess />}
-                        <h4 className='mt-4'>{ !cancelled ? 'Cancel Appointment' : 'Appointment Cancelled' }</h4>
+                        {!cancelled ? <CancelAlert /> : <CancelSuccess />}
+                        <h4 className='mt-4'>{!cancelled ? 'Cancel Appointment' : 'Appointment Cancelled'}</h4>
                         {!cancelled ? <p className="small">You are about to cancel an appointment with a care provider.</p> : <></>}
                         <Button color='amber px-2' onClick={() => !cancelled ? toggleCancel() : toggleModal()}
                             className='text-white'> {`${!cancelled ? 'Cancel Appointment' : 'Return To Appointments '}`}
                         </Button>
                         <br />
-                        <Button color='dark' outline onClick={toggleModal} className='my-3 px-5'>Cancel</Button>
+                        {!cancelled ? <Button color='dark' outline onClick={toggleModal} className='my-3 px-5'>Cancel</Button> : <></>}
                     </div>
                 </div>
             </CustomModal>
