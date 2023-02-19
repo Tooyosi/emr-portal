@@ -1,10 +1,25 @@
-import React from 'react'
-import { Card, CardBody, Input, Table, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import React, { useState } from 'react'
+import { Card, CardBody, Button, Input, Table, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import CaretIcon from '../Icons/CaretIcon'
 import Available from 'Pages/Doctor/Icons/Available'
 import DimAvailable from 'Pages/Doctor/Icons/DimAvailable'
+import CustomModal from 'components/commons/CustomModal'
+import CancelAlert from 'Pages/Appointments/Icons/CancelAlert'
+import CancelSuccess from 'Pages/Appointments/Icons/CancelSuccess'
+import SideComponent from 'Pages/Doctor/SideComponent'
 
 const Transactions: React.FC<any> = ({ header, data }) => {
+
+    const [openModal, setOpenModal] = useState(false)
+    const toggleModal = () => {
+        setOpenModal(!openModal)
+        toggleCancel()
+    }
+    const [cancelled, setCancelled] = useState(false)
+    const toggleCancel = () => openModal === true ? setCancelled(true) : setCancelled(false)
+
+    const [openDatePicker, setOpenDatePicker] = useState(false)
+    const toggleDatePicker = () => setOpenDatePicker(!openDatePicker)
 
     const tableData = data || [{
         careProvider: "Courtney Henry",
@@ -78,8 +93,9 @@ const Transactions: React.FC<any> = ({ header, data }) => {
                                         <CaretIcon />
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>Reschedule Appointment</DropdownItem>
+                                        <DropdownItem onClick={toggleDatePicker}>Reschedule Appointment</DropdownItem>
                                         <DropdownItem href={`/appointment/${i}`}>View Details</DropdownItem>
+                                        <DropdownItem onClick={toggleModal}>Cancel Appointment</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </td>
@@ -87,6 +103,27 @@ const Transactions: React.FC<any> = ({ header, data }) => {
                     ))}
                 </tbody>
             </Table>
+
+            <CustomModal
+                isOpen={openModal}
+                toggle={toggleModal}
+                classProp="modal-md"
+            >
+                <div className='text-center'>
+                    <div>
+                        { !cancelled ? <CancelAlert /> : <CancelSuccess />}
+                        <h4 className='mt-4'>{ !cancelled ? 'Cancel Appointment' : 'Appointment Cancelled' }</h4>
+                        {!cancelled ? <p className="small">You are about to cancel an appointment with a care provider.</p> : <></>}
+                        <Button color='amber px-2' onClick={() => !cancelled ? toggleCancel() : toggleModal()}
+                            className='text-white'> {`${!cancelled ? 'Cancel Appointment' : 'Return To Appointments '}`}
+                        </Button>
+                        <br />
+                        <Button color='dark' outline onClick={toggleModal} className='my-3 px-5'>Cancel</Button>
+                    </div>
+                </div>
+            </CustomModal>
+
+            <SideComponent open={openDatePicker} toggle={toggleDatePicker} />
         </div>
         //     </CardBody>
         // </Card>

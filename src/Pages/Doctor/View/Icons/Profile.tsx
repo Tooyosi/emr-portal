@@ -13,7 +13,7 @@ function ProfileProfileIcon() {
         cx="33"
         cy="33"
         r="31.5"
-        fill="#EDEDED"
+        fill="#6666FF"
         stroke="#fff"
         strokeWidth="3"
       ></circle>
@@ -30,7 +30,7 @@ function ProfileProfileIcon() {
       </mask>
       <g mask="url(#mask0_49_8812)">
         <path
-          fill="#C9CDD4"
+          fill="#FFFFFF"
           d="M33 39c-8.63 0-16 3.786-16 18.93C17 73.08 24.325 77 33 77c8.63 0 16-3.78 16-18.93S41.677 39 33 39z"
         ></path>
       </g>

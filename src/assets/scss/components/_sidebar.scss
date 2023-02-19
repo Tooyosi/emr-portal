@@ -57,16 +57,17 @@
     display: flex;
     align-items: center;
     width: 85%;
-    font-size: 16px;
+    font-size: 17px;
     // font-family: 'Circular Std';
     font-style: normal;
-    font-weight: 450;
+    font-weight: 500;
     border-radius: 10px;
+    //font-weight: bold;
 
     .icon-bg{
       width: 30px;
       height: 30px;
-      background-color: #F2F2F2;
+      //background-color: #F2F2F2;
       border-radius: 10px;
       margin-right: 20px;
       display: flex;
@@ -85,16 +86,17 @@
 
     &.active,
     &:hover {
-      background-color: $lightOrange;
-      .icon-bg{
-        background-color: $amber;
-      }
+      //background-color: $lightOrange;
+      // .icon-bg{
+      //   background-color: $amber;
+      // }
       .sidebar-link {
-        color: $textBlack;
+        color: $amber;
 
         svg {
-          path {
-            fill: $textBlack;
+          path,
+          ellipse {
+            fill: $amber;
           }
         }
       }

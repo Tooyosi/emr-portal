@@ -49,9 +49,11 @@ const SearchInput: React.FC<any> = (props) => {
     </div>)
 }
 
+
 const Appointments = () => {
     const [state, setState] = useState<any>({
-        showOnly: ''
+        showOnly: '',
+        search: ''
     })
 
     const [allOrComplete, setAllOrComplete] = useState<any>('all')
@@ -65,7 +67,7 @@ const Appointments = () => {
 
     const tableData = useMemo(() => {
         if (allOrComplete === 'complete') {
-            return allTableData.filter((data) => data.completed === true)
+            return allTableData.filter((data: any) => data.completed === true)
         } else {
             return allTableData;
         }
@@ -79,6 +81,14 @@ const Appointments = () => {
         }
     }, [state.showOnly, tableData])
 
+    const searchData = useMemo(() => {
+        if (state.search === "") {
+            return filterData
+        } else {
+            return filterData.filter((data: any) => data.careProvider.includes(state.search))
+        }
+    }, [state.search, filterData])
+
     const doFilter = (data: any) => {
         setState((prev: any) => (
             {
@@ -86,6 +96,21 @@ const Appointments = () => {
                 showOnly: data
             }
         ))
+    }
+
+    const doSearch = (data: any) => {
+        setState((prev: any) => (
+            {
+                ...prev,
+                search: data
+            }
+        ))
+    }
+
+
+    const handleChange = (e: any) => {
+        console.log(e.target.value)
+        doSearch(e.target.value)
     }
 
     return (
@@ -129,13 +154,14 @@ const Appointments = () => {
                         <Row>
                             <Col>
                                 <SearchInput name="searchCareProvider"
-                                // value={state.stateFilter} onChange={handleChange}
-                                 placeholder="Search care provider" />
+                                    //value={state.stateFilter}
+                                    onChange={handleChange}
+                                    placeholder="Search care provider" />
                             </Col>
                         </Row>
                         <Row>
                             <Col className="mt-1">
-                                <Transactions data={filterData} />
+                                <Transactions data={searchData} />
                             </Col>
                         </Row>
                     </CardBody>

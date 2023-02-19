@@ -25,7 +25,7 @@ const ViewDetails = () => {
                             <div className="d-flex align-items-center">
                                 <ProfileProfileIcon />
                                 <div className='ml-4'>
-                                    <h5>Patient’s Name</h5>
+                                    <h5 className='text-amber'>Care Provider’s Name</h5>
                                     <p className='small mb-0'><span className="text-muted">Last Login:</span> <b>Aug 24, 2022, 12:00:00 AM</b></p>
                                 </div>
                             </div>
