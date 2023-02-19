@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, Input, Table } from 'reactstrap'
+import { Row, Col, Button, Card, CardBody, Input, Table } from 'reactstrap'
 import Available from './Icons/Available'
 import Unavailable from './Icons/Unavailable'
 
@@ -36,6 +36,26 @@ const Search: React.FC<any> = ({ header, doBook, data }) => {
                         ))}
                     </tbody>
                 </Table>
+                <br />
+                <Row>
+                    <Col md='4'>
+                        <span className='small'>Showing</span>
+                        &nbsp;
+                        <input type="number" min="1" max="25" value="25" className='page-number' />
+                    </Col>
+                    <Col md='5'></Col>
+                    <Col>
+                        <Button color='dark' outline className=''>Previous</Button>
+                        &nbsp; &nbsp;
+                        <span className='small'>1</span>
+                        &nbsp; &nbsp;
+                        <span className='small'>2</span>
+                        &nbsp; &nbsp;
+                        <span className='small'>3</span>
+                        &nbsp; &nbsp;
+                        <Button color='dark' outline className=''>Next</Button>
+                    </Col>
+                </Row>
             </CardBody>
         </Card>
     )

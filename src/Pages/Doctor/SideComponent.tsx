@@ -5,13 +5,22 @@ import 'react-day-picker/dist/style.css';
 import moment from 'moment';
 import CustomModal from 'components/commons/CustomModal';
 import CalenderIcon from './Icons/CalenderIcon';
+import CancelSuccess from 'Pages/Appointments/Icons/CancelSuccess';
 
 const SideComponent: React.FC<any> = ({ open, toggle }) => {
 
+
     const [selected, setSelected] = useState<DateRange | any>({});
     const [activeTime, setActiveTime] = useState("All Day");
-    const [openModal, setOpenModal] = useState(false)
-    const toggleModal = () => setOpenModal(!openModal)
+    const [openModal, setOpenModal] = useState(false);
+    const [dateOrTime, setDateOrTime] = useState('date');
+    const toggleModal = () => setOpenModal(!openModal);
+    const doContinue = () => dateOrTime === 'date' ? setDateOrTime('time') : toggleModal()
+    const doCancel = () => {
+        toggle();
+        setTimeout(() => setDateOrTime('date'), 1000);
+    }
+
     return (
         <div className={`sideModal ${open && "show"}`}>
             <div className="sideModalAside pt-5 px-4">
@@ -24,7 +33,7 @@ const SideComponent: React.FC<any> = ({ open, toggle }) => {
                                     {/* <Button style={{backgroundImage:"url('./images/LeftArrow.svg')", backgroundSize:"cover", width:"40px", height:"40px"}}></Button> */}
                                     <img loading='lazy' alt="Back"
                                         // style={{ width: "500%", height: "500%"}}
-                                        onClick={toggle}
+                                        onClick={ () => dateOrTime === 'date' ? doCancel() : setDateOrTime('date') }
                                         src={require(`./images/LeftArrow.svg`).default}
                                     />
                                 </Col>
@@ -35,40 +44,42 @@ const SideComponent: React.FC<any> = ({ open, toggle }) => {
                             <Card>
                                 <CardBody className='p-4'>
                                     <Row>
-                                        <Col sm="12">
-                                            <h4>Set Date Availability</h4>
-                                            <p className='small'>Select your preferred date on the calender below to book a session with your care provider</p>
 
-                                            <hr />
+                                        {dateOrTime === 'date' ?
+                                            <Col sm="12">
+                                                <h4 className='font-weight-bold'>Set Date Availability</h4>
+                                                <p className='small'>Select your preferred date on the calender below to book a session with your care provider</p>
 
-                                            <DayPicker
-                                                mode="single"
-                                                selected={selected}
-                                                onSelect={setSelected}
-                                                disabled={(date: Date) => {
-                                                    let now = moment().subtract(1, "day");
-                                                    return moment(date) < now;
-                                                }}
-                                            />
-                                        </Col>
-                                        {/* <Col md="5">
-                                    <p className="small mt-5 mb-1">Available Time</p>
-                                    <Row>
-                                        {["All Day", "12:00 pm - 4:00 pm", "08:00 am - 12:00 pm", "4:00 pm - 8:00 pm"].map((time) => (
-                                            <Col sm="6">
-                                                <div className={`time-div ${time === activeTime && "active"} my-2 text-center`} onClick={() => setActiveTime(time)}>
-                                                    {time}
-                                                </div>
-                                            </Col>
-                                        ))}
-                                    </Row>
-                                </Col> */}
+                                                <hr />
+
+                                                <DayPicker
+                                                    mode="range"
+                                                    selected={selected}
+                                                    onSelect={setSelected}
+                                                    disabled={(date: Date) => {
+                                                        let now = moment().subtract(1, "day");
+                                                        return moment(date) < now;
+                                                    }}
+                                                />
+                                            </Col> :
+                                            <Col sm="12">
+                                                <h4 className='font-weight-bold'>Set Time Availability</h4>
+                                                <Row>
+                                                    {["All Day", "12:00 pm - 1:00 pm", "1:00 pm - 2:00 pm", "3:00 pm - 4:00 pm", "4:00 pm - 5:00 pm"].map((time) => (
+                                                        <Col sm="12">
+                                                            <div className={`time-div ${time === activeTime && "active"} my-2 text-center`} onClick={() => setActiveTime(time)}>
+                                                                {time}
+                                                            </div>
+                                                        </Col>
+                                                    ))}
+                                                </Row>
+                                            </Col>}
                                     </Row>
                                     <Row>
                                         <Col className='mt-2 mx-3' sm="12">
                                             <div className="d-flex">
-                                                <Button color='dark' outline onClick={toggle} className=' px-3'>Cancel</Button>
-                                                <Button color='amber' onClick={toggleModal} className='ml-auto px-3 mr-3 text-white'>Continue</Button>
+                                                <Button color='dark' outline onClick={ () => dateOrTime === 'date' ? doCancel() : setDateOrTime('date') } className=' px-3'>Cancel</Button>
+                                                <Button color='amber' onClick={doContinue} className='ml-auto px-3 mr-3 text-white'>{dateOrTime === 'date' ? 'Continue' : 'Book Session '}</Button>
                                             </div>
                                         </Col>
                                     </Row>
@@ -87,16 +98,18 @@ const SideComponent: React.FC<any> = ({ open, toggle }) => {
                     classProp="modal-sm"
                 >
                     <div className='text-center'>
-                        <CalenderIcon />
                         <div>
-                            <h4>Book Session</h4>
-                            <p className="small">You are about to book a session with this care provider</p>
-                            <Button color='dark' onClick={() => {
-                                toggleModal()
-                                toggle()
-                            }} className='text-white'>Book Session</Button>
+                            <CancelSuccess />
+                            <h4 className='mt-4'>Reschedule Successful</h4>
+                            <p className="small">You have successfully rescheduled a booking with a care provider.</p>
+                            <Button color='amber px-2' onClick={() => {
+                                toggleModal();
+                                doCancel();
+                            }}
+                                className='text-white'> Return To Appointments
+                            </Button>
                             <br />
-                            <Button color='dark' outline onClick={toggleModal} className='mt-2 px-3'>Cancel</Button>
+                            <Button color='dark' outline onClick={toggleModal} className='my-3 px-5'>Cancel</Button>
                         </div>
                     </div>
                 </CustomModal>

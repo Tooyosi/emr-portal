@@ -63,8 +63,8 @@ const Doctor = () => {
     const [openModal, setOpenModal] = useState(false)
     const toggleModal = () => setOpenModal(!openModal);
 
-    const [careProvider, setCareProvider] = useState(false)
-    const toggleCareProvider = () => setCareProvider(!careProvider)
+    // const [careProvider, setCareProvider] = useState(false)
+    // const toggleCareProvider = () => setCareProvider(!careProvider)
 
 
     const handleChange = (e: any) => {
@@ -125,21 +125,21 @@ const Doctor = () => {
             </Row>
 
             {searchOrFrequentlyUsed === 'search' &&
-            <Row  className='mh-100 mt-3'>
-                <Col>
-                    <Card>
-                        <CardBody className='justify-content-center text-center py-5 h-100'>
-                            <br /><br /><br />
-                            <img loading='lazy' alt="Back" className='img-fluid my-3'
-                                // style={{ width: "500%", height: "500%"}}
-                                src={require(`./images/EmptySearch.svg`).default}
-                            />
-                            <p>Your search result will display here</p>
-                            <br /><br /><br />
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>}
+                <Row className='mh-100 mt-3'>
+                    <Col>
+                        <Card>
+                            <CardBody className='justify-content-center text-center py-5 h-100'>
+                                <br /><br /><br />
+                                <img loading='lazy' alt="Back" className='img-fluid my-3'
+                                    // style={{ width: "500%", height: "500%"}}
+                                    src={require(`./images/EmptySearch.svg`).default}
+                                />
+                                <p>Your search result will display here</p>
+                                <br /><br /><br />
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>}
 
             {searchOrFrequentlyUsed === 'frequentlyUsed' &&
                 <Row>
