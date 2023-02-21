@@ -2,7 +2,6 @@ import Logo from 'components/Logo';
 import React from 'react'
 import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import "./_authLayout.scss";
-import LoginImage from './svgs/LoginImage';
 
 const AuthLayout: React.FC<any> = ({ children }) => {
     return (
@@ -27,7 +26,6 @@ const AuthLayout: React.FC<any> = ({ children }) => {
                             max-width="10%"
                             src={require(`./images/login.svg`).default}
                         />
-                        <LoginImage />
                     </Col>
                 </Row>
             </Container>
